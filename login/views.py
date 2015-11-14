@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login
 from django.template import RequestContext
@@ -43,7 +43,7 @@ def test(request):
        
         if user_details.objects.filter(User_Name=username, Password=password).exists():    
             successful_login = True
-            return render(request, "index.html", {})
+            return HttpResponseRedirect('/home/')
         else:
             successful_login = False
     return render(request, "login.html", {'successful_login' : successful_login})
@@ -63,10 +63,10 @@ def register(request):
         gcaptcha = request.POST.get('g-recaptcha-response')
         if password != confirm_password:
             password_match = False
-            return render(request, "register.html", {})
+            return render(request, "register.html", {'password_match' : password_match})
         print gcaptcha
         
-        user_id = user_details.objects.values('User_ID').latest('id')
+        user_id = user_details.objects.values('User_ID').latest('User_ID')
         user_id = user_id['User_ID']
         x = user_id[4:]
         x = int(x) + 1
@@ -81,7 +81,7 @@ def register(request):
                                     Address = address,
                                     Password = password,)
         
-        return HttpResponse("success")
+        return render(request, "registration_success.html", {})
     
     password_match = True
     return render(request, "register.html", {'password_match' : password_match})

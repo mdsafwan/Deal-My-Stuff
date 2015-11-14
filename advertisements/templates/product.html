@@ -1,0 +1,257 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Deal My Stuff | Product Details</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'> 
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- start details -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/productviewgallery.css' %}" media="all" />
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/cloud-zoom.1.0.3.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.fancybox-buttons.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.fancybox-thumbs.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/productviewgallery.js' %}"></script>
+<!-- start top_js_button -->
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+   <script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+		});
+	</script>
+</head>
+<body>
+<!-- start header -->
+<div class="header_bg">
+<div class="wrap">
+	<div class="header">
+		<div class="logo">
+			<a href="/home/"><img src="{% static 'images/logo.png' %}" alt=""/> </a>
+		</div>
+		<div class="h_icon">
+		<ul class="icon1 sub-icon1">
+			<li><a class="active-icon c1" href="#"><i>*user*</i></a>
+				<!--<ul class="sub-icon1 list">
+					<li><h3>shopping cart empty</h3><a href=""></a></li>
+					<li><p>if items in your wishlit are missing, <a href="contact.html">contact us</a> to view them</p></li>
+				</ul>-->
+			</li>
+		</ul>
+		</div>
+		<!--<div class="h_search">
+    		<form>
+    			<input type="text" value="">
+    			<input type="submit" value="">
+    		</form>
+		</div>-->
+		<div class="clear"></div>
+	</div>
+</div>
+</div>
+<div class="header_btm">
+<div class="wrap">
+	<div class="header_sub">
+		<div class="h_menu">
+			<ul>
+				<li class="active"><a href="/home/">Home</a></li> |
+				<li><a href="/display_advertisement/?C=CAT_1000">Electronic Gadgets</a></li> |
+				<li><a href="/display_advertisement/?C=CAT_1001">Books</a></li> |
+				<li><a href="/display_advertisement/?C=CAT_1002">Vehicles</a></li> |
+				<li><a href="/display_advertisement/?C=CAT_1003">Household items</a></li> |				
+				<li><a href="/post_advertisement/">Post an advertisement</a></li> |
+				<li><a href="contact.html">Contact Us</a></li>
+			</ul>
+		</div>
+		<div class="top-nav">
+	          <nav class="nav">	        	
+	    	    <a href="#" id="w3-menu-trigger"> </a>
+	                  <ul class="nav-list" style="">
+	            	        <li class="nav-item"><a class="active" href="index.html">Home</a></li>
+							<li class="nav-item"><a href="sale.html">Sale</a></li>
+							<li class="nav-item"><a href="handbags.html">Handbags</a></li>
+							<li class="nav-item"><a href="accessories.html">Accessories</a></li>
+							<li class="nav-item"><a href="shoes.html">Shoes</a></li>
+							<li class="nav-item"><a href="service.html">Services</a></li>
+							<li class="nav-item"><a href="contact.html">Contact</a></li>
+	                 </ul>
+	           </nav>
+	             <div class="search_box">
+				<form>
+				   <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+			    </form>
+			</div>
+	          <div class="clear"> </div>
+	          <script src="js/responsive.menu.js"></script>
+         </div>		  
+	<div class="clear"></div>
+</div>
+</div>
+</div>
+<!-- start main -->
+<div class="main_bg">
+<div class="wrap">	
+	<div class="main">
+	<!-- start content -->
+	<div class="single">
+			<!-- start span1_of_1 -->
+			<div class="left_content">
+			<div class="span1_of_1">
+				<!-- start product_slider -->
+				<div class="product-view">
+				    <div class="product-essential">
+				        <div class="product-img-box">
+				    <div class="more-views" style="float:left;">
+				        <div class="more-views-container">
+				        </div>
+				    </div>
+				    <div class="product-image"> 
+				        
+				           	<img src="{% static 'images/iphone.png' %}" alt="" title="" />
+				   </div>
+					
+				</div>
+				</div>
+				</div>
+				<!-- end product_slider -->
+			</div>
+			<!-- start span1_of_1 -->
+			<div class="span1_of_1_des">
+				  <div class="desc1">
+					<h1>Lorem Ipsum is simply dummy text </h1>
+					<br><br>
+                    <h5>MRP: ₹ 1000</h5>
+					<h5>Selling Price: ₹ 1000</h5>
+			   	 </div>
+			   	</div>
+			   	<div class="clear"></div>
+			   	<!-- start tabs -->
+				   	<section class="tabs">
+		            <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked">
+			        <label for="tab-1" class="tab-label-1">Description</label>
+			
+		            <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2">
+			        <label for="tab-2" class="tab-label-2">Contact seller</label>
+			
+				    <div class="clear-shadow"></div>
+					
+			        <div class="content">
+				        <div class="content-1">
+				        	<p class="para top">ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD </p>
+							
+							<div class="clear"></div>
+						</div>
+				        <div class="content-2">
+							<p class="para">Seller User_ID : </p>
+							<p class="para">Name : </p>
+                            <p class="para">Phone Number : </p>
+							
+						</div>
+			        </div>
+			        </section>
+		         	<!-- end tabs -->
+			   	</div>
+    	    <div class="clear"></div>
+	       </div>	
+	<!-- end content -->
+	</div>
+</div>
+</div>		
+<!-- start footer -->
+<div class="footer_bg">
+<div class="wrap">	
+	<div class="footer">
+		<!-- start grids_of_4 -->	
+		<div class="grids_of_4">
+			<div class="grid1_of_4">
+				<h4>electronic gadgets</h4>
+				<ul class="f_nav">
+					<li>Mobile Phones</li>
+                    <li>Tablets</li>
+                    <li>Personal Computers</li>
+                    <li>Laptops</li>
+                    <li>Pen drives</li>
+                    <li>Memory Cards</li>
+                    <li>...And lots more!</li>
+				</ul>
+			</div>
+			<div class="grid1_of_4">
+				<h4>Books</h4>
+				<ul class="f_nav">
+					<li>Engineering Text Books</li>
+                    <li>Literature & Fiction</li>
+                    <li>Biographies & Autobiographies</li>
+                    <li>Business, Investing and Management</li>
+                    <li>Comics & Graphic Novels</li>
+                    <li>Science & Technology </li>
+                    <li>...And lots more!</li>
+				</ul>
+			</div>
+			<div class="grid1_of_4">
+				<h4>Vehicles</h4>
+				<ul class="f_nav">
+					<li>Bicycles</li>
+                    <li>Scooters</li>
+                    <li>Mopeds</li>
+                    <li>Motorcycles</li>
+                    <li>Sport Bikes</li>
+                    <li>Cars</li>
+                    <li>...And Lots More!</li>
+					
+				</ul>
+			</div>
+			<div class="grid1_of_4">
+				<h4>Household Items</h4>
+				<ul class="f_nav">
+					<li>Buckets</li>
+                    <li>Chairs</li>
+                    <li>Cloth Hangers</li>
+                    <li>Utensils</li>
+                    <li>Hand Tools</li>
+                    <li>Tables & Desks</li>
+                    <li>...And Lots More!</li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+</div>	
+<!-- start footer -->
+<div class="footer_bg1">
+<div class="wrap">
+	<div class="footer">
+		<!-- scroll_top_btn -->
+	    <script type="text/javascript">
+			$(document).ready(function() {
+			
+				var defaults = {
+		  			containerID: 'toTop', // fading element id
+					containerHoverID: 'toTopHover', // fading element hover id
+					scrollSpeed: 1200,
+					easingType: 'linear' 
+		 		};
+				
+				
+				$().UItoTop({ easingType: 'easeOutQuart' });
+				
+			});
+		</script>
+		 <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+		<!--end scroll_top_btn -->
+		<div class="copy">
+			<p class="link">&copy;  All rights reserved | Developed by&nbsp;&nbsp;Safwan & Safiulla</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+</div>
+</body>
+</html>

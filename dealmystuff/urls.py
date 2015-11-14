@@ -16,11 +16,27 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from login.views import display_login, after_login, test, login_user, register
+from advertisements.views import home, post_advertisement, display_advertisement
+from django.conf import settings
+from django.conf.urls import patterns
+
+# ... your normal urlpatterns here
+
 
 urlpatterns = [
     url(r'^login/$', login_user),
     url(r'^register/$', register),
     url(r'^test/', test),
+    url(r'^home/', home),
     url(r'^after_login/', after_login),
+    url(r'^post_advertisement/', post_advertisement),
+    url(r'^display_advertisement/', display_advertisement),
     url(r'^admin/', include(admin.site.urls)),
 ]
+
+if settings.DEBUG:
+    urlpatterns += patterns(
+        'django.views.static',
+        (r'media/(?P<path>.*)',
+        'serve',
+        {'document_root': settings.MEDIA_ROOT}),)
