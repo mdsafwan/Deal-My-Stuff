@@ -97,40 +97,40 @@
 			 	 	    <form method="post" action="/post_advertisement/">{% csrf_token %}
 					    	<div>
 						    	<span><label>Title</label></span>
-						    	<span><input name="title" type="text" class="textbox"></span>
+						    	<span><input name="title" type="text" class="textbox" required></span>
 						    </div>
 						    <div>
 						    	<span><label>Advertisement Tag-1</label></span>
-						    	<span><input name="adv_tag1" type="text" class="textbox"></span>
+						    	<span><input name="adv_tag1" type="text" class="textbox" required></span>
 						    </div>
 						    <div>
 						     	<span><label>Advertisement Tag-2</label></span>
-						    	<span><input name="adv_tag2" type="text" class="textbox"></span>
+						    	<span><input name="adv_tag2" type="text" class="textbox" required></span>
 						    </div>
                             <div>
 						     	<span><label>Advertisement Tag-3</label></span>
-						    	<span><input name="adv_tag3" type="text" class="textbox"></span>
+						    	<span><input name="adv_tag3" type="text" class="textbox" required></span>
 						    </div>
                             <div>
 						     	<span><label>MRP</label></span>
-						    	<span><input name="mrp" type="text" class="textbox"></span>
+						    	<span><input name="mrp" type="text" class="textbox" required></span>
 						    </div>
                             <div>
 						     	<span><label>Selling Price</label></span>
-						    	<span><input name="selling_price" type="text" class="textbox"></span>
+						    	<span><input name="selling_price" type="text" class="textbox" required></span>
 						    </div>
                             <hr>
                             <div>
 						     	<span><label>Category</label></span>
-						    	<span><p>Electronic Gadgets</p><input name="category" type="radio" value="CAT_1000" class="textbox"></span>
-                                <span><p>Books</p><input name="category" type="radio" value="CAT_1001" class="textbox"></span>
-                                <span><p>Vehicles</p><input name="category" type="radio" value="CAT_1002" class="textbox"></span>
-                                <span><p>Household Items</p><input name="category" type="radio" value="CAT_1003" class="textbox"></span>
+						    	<span><p>Electronic Gadgets</p><input name="category" type="radio" value="CAT_1000" class="textbox" required></span>
+                                <span><p>Books</p><input name="category" type="radio" value="CAT_1001" class="textbox" required></span>
+                                <span><p>Vehicles</p><input name="category" type="radio" value="CAT_1002" class="textbox" required></span>
+                                <span><p>Household Items</p><input name="category" type="radio" value="CAT_1003" class="textbox" required></span>
                             </div>
                             <hr>
                             <div>
 						     	<span><label>Image 1</label></span>
-						    	<span><input name="image1" type="file" class="textbox"></span>	
+						    	<span><input name="image1" type="file" class="textbox" required></span>	
                             </div>
                             
 						    <div>
@@ -207,6 +207,11 @@
 	</div>
 </div>
 </div>
+<script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+<script>
+  $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
+</script>
+
 <!-- start footer -->
 <div class="footer_bg1">
 <div class="wrap">
