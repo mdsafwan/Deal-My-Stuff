@@ -89,3 +89,13 @@ def display_advertisement(request):
  	return render(request, "display_advertisement.html", {'ads' : ads,
 														'heading' : heading,
 													})
+ 	
+ 
+def product_display(request):
+	Advertisement_ID = request.GET.get('P')
+	Number = Advertisement_ID[4:]
+	Product_ID = "PRD_" + Number
+	
+	x = advertisement.objects.filter(Advertisement_ID=Advertisement_ID)
+	ad = x[0]
+	return render(request, "product.html", {'ad' : ad})

@@ -99,7 +99,7 @@
 			{% set count = 1 %}
 				<div class="grids_of_3">
 				<div class="grid1_of_3">
-				<a href="details.html">
+				<a href="/product_display/?P={{ad.Advertisement_ID}}">
 					<img src="{{MEDIA_URL}}{{ad.Image1}}" alt=""/>
 					<h3>{{ad.Title}}</h3>
 					<div class="price">
@@ -115,7 +115,7 @@
 		{% else %}
 			{% set count = 2 %}
 			<div class="grid1_of_3">
-				<a href="details.html">
+				<a href="/product_display/?P={{ad.Advertisement_ID}}">
 					<img src="{{MEDIA_URL}}{{ad.Image1}}" alt=""/>
 					<h3>{{ad.Title}}</h3>
 					<div class="price">

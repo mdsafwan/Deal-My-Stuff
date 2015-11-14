@@ -35,7 +35,7 @@ def after_login(request):
     print password
     return HttpResponse("welcome: %s" % request.path)
 
-def test(request):
+def login(request):
     successful_login = True
     if request.POST:
         username = request.POST.get('username')
