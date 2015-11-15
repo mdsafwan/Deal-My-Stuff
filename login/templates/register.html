@@ -94,9 +94,10 @@
                                         <input class="form-control" placeholder="Username" name="username" type="text" required>
                                         <input class="form-control" placeholder="Name" name="name" type="text" required>
                                         <input class="form-control" placeholder="E-Mail" name="email" type="email" required>
-                                        <input class="form-control" placeholder="USN" name="usn" type="text" required>
-                                        <input class="form-control" placeholder="Mobile Number" name="mobile_number" type="text" 
-                                        data-validation-number-message="Enter your mobile number" required>
+                                        <input class="form-control" placeholder="USN" name="usn" type="text" maxlength="10" oninvalid="setCustomValidity('Enter a valid USN')"
+    onchange="try{setCustomValidity('')}catch(e){}" required pattern="[1]{1}(RV|rv)[0-9][0-9](CS|EC|IS|TE|EI|ME|CV|EE|BT|CH|IM|cs|ec|is|te|ei|me|cv|ee|bt|ch|im)[0-9][0-9][0-9]">
+                                        <input class="form-control" placeholder="Mobile Number" name="mobile_number" min="7000000000" max="9999999999" type="number" oninvalid="setCustomValidity('Enter a valid mobile number')"
+    onchange="try{setCustomValidity('')}catch(e){}" required>
                                         <input class="form-control" placeholder="Address" name="address" type="text" required>
                                         <input class="form-control" placeholder="Password" name="password" type="password" required>
                                         <input class="form-control" placeholder="Confirm Password" name="confirm_password" type="password" 
@@ -115,6 +116,18 @@
                         {%if not password_match%}
                        			 <div id="alert123" class="alert alert-danger" tabindex="0">
     							 	<center><strong>Passwords do not match!</strong></center>
+    						        <center>Please Try Again!</center>
+  						         </div>
+  						{% endif %}
+  						{%if not usn_valid%}
+                       			 <div id="alert123" class="alert alert-danger" tabindex="0">
+    							 	<center><strong>USN already exists!</strong></center>
+    						        <center>Please Try Again!</center>
+  						         </div>
+  						{% endif %}
+  						{%if not username_valid%}
+                       			 <div id="alert123" class="alert alert-danger" tabindex="0">
+    							 	<center><strong>Username already exists!</strong></center>
     						        <center>Please Try Again!</center>
   						         </div>
   						{% endif %}

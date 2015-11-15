@@ -58,6 +58,10 @@ def login(request):
 
 
 def register(request):
+    username_valid = True
+    usn_valid = True
+    password_match = True
+    
     if request.POST:
         username = request.POST.get('username')
         name = request.POST.get('name')
@@ -68,9 +72,20 @@ def register(request):
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
         gcaptcha = request.POST.get('g-recaptcha-response')
+        
+        if user_details.objects.filter(USN = usn).exists():
+            usn_valid = False
+            
         if password != confirm_password:
-            password_match = False
-            return render(request, "register.html", {'password_match' : password_match})
+            password_match = False  
+        
+        if user_details.objects.filter(User_Name = username).exists():
+            username_valid = False
+            
+        if password_match == False or usn_valid == False or username_valid == False:
+            return render(request, "register.html", {'password_match' : password_match,
+                                                    'usn_valid' : usn_valid,
+                                                    'username_valid' : username_valid})
         print gcaptcha
         
         user_id = user_details.objects.values('User_ID').latest('User_ID')
@@ -86,12 +101,14 @@ def register(request):
                                     USN = usn,
                                     Mobile_Number = mobile_number,
                                     Address = address,
-                                    Password = password,)
+                                    Password = password)
         
         return render(request, "registration_success.html", {})
     
-    password_match = True
-    return render(request, "register.html", {'password_match' : password_match})
+    
+    return render(request, "register.html", {'password_match' : password_match,
+                                             'usn_valid' : usn_valid,
+                                             'username_valid' : username_valid})
 
 def logout(request):
     user_id_of_user_logged_in = user_login.objects.last()

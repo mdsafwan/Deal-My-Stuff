@@ -7,8 +7,8 @@ class advertisement(models.Model):
     Post_Date = models.DateTimeField(null=True, blank=True)
     Sold_Date = models.DateTimeField(null=True, blank=True)
     Status = models.CharField(max_length=10, null=True, blank=True)
-    Seller_User_ID = models.ForeignKey(user_details, to_field='User_ID', related_name="Seller_User_ID")
-    Buyer_User_ID = models.ForeignKey(user_details, to_field='User_ID', related_name="Buyer_User_ID")
+    Seller_User_ID = models.ForeignKey(user_details, to_field='User_ID', related_name="Seller_User_ID", db_column='Seller_User_ID')
+    Buyer_User_ID = models.ForeignKey(user_details, to_field='User_ID', related_name="Buyer_User_ID", db_column='Buyer_User_ID')
     MRP = models.IntegerField(null=True, blank=True)
     Selling_Price = models.IntegerField(null=True, blank=True)
     Image1 = models.TextField(null=True, blank=True)
@@ -27,7 +27,7 @@ class advertisement(models.Model):
         verbose_name_plural = "advertisements"
  
 class category(models.Model):
-    Advertisement_ID = models.ForeignKey(advertisement, to_field='Advertisement_ID')
+    Advertisement_ID = models.ForeignKey(advertisement, to_field='Advertisement_ID', db_column='Advertisement_ID')
     Product_ID = models.CharField(max_length=8, primary_key=True, default="PRD_0000")
     Category = models.CharField(max_length=16, null=True, blank=True)
       
@@ -41,7 +41,7 @@ class category(models.Model):
         verbose_name_plural = "categories"
         
 class electronic_gadget(models.Model):
-    Product_ID = models.ForeignKey(category, to_field="Product_ID")
+    Product_ID = models.ForeignKey(category, to_field="Product_ID", db_column="Product_ID")
     Brand = models.CharField(max_length=100, null=True, blank=True)
     Product_Model = models.CharField(max_length=100, null=True, blank=True)
     Specification = models.TextField(null=True, blank=True)
@@ -54,7 +54,7 @@ class electronic_gadget(models.Model):
         verbose_name_plural = "electronic_gadgets"
         
 class book(models.Model):
-    Product_ID = models.ForeignKey(category, to_field="Product_ID")
+    Product_ID = models.ForeignKey(category, to_field="Product_ID", db_column="Product_ID")
     Genre = models.CharField(max_length=100, null=True, blank=True)
     Book_Language = models.CharField(max_length=100, null=True, blank=True)
     Publisher = models.CharField(max_length=100, null=True, blank=True)
@@ -67,7 +67,7 @@ class book(models.Model):
         verbose_name_plural = "books"
         
 class vehicle(models.Model):
-    Product_ID = models.ForeignKey(category, to_field="Product_ID")
+    Product_ID = models.ForeignKey(category, to_field="Product_ID", db_column="Product_ID")
     Manufacturer = models.CharField(max_length=100, null=True, blank=True)
     Product_Model = models.CharField(max_length=100, null=True, blank=True)
     Year = models.CharField(max_length=4, null=True, blank=True)
@@ -80,7 +80,7 @@ class vehicle(models.Model):
         verbose_name_plural = "vehicles"
         
 class household_item(models.Model):
-    Product_ID = models.ForeignKey(category, to_field="Product_ID")
+    Product_ID = models.ForeignKey(category, to_field="Product_ID", db_column="Product_ID")
     Brand = models.CharField(max_length=100, null=True, blank=True)
     Type = models.CharField(max_length=100, null=True, blank=True)
     
