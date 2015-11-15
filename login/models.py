@@ -17,3 +17,17 @@ class user_details(models.Model):
         managed = True
         db_table = "user_details"
         ordering = ['pk']
+        verbose_name_plural = "user_details"
+        
+class user_login(models.Model):
+    User_ID = models.ForeignKey(user_details, to_field='User_ID', related_name="User_ID_Loggedin")
+    Logged_In_Time = models.DateTimeField(null=True, blank=True)
+    Logged_Out_Time = models.DateTimeField(null=True, blank=True)
+    
+    def __unicode__(self):
+        return u'%s' % (self.User_ID)
+    
+    class Meta:
+        managed = True
+        db_table = "user_login"
+        

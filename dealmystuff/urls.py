@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from login.views import display_login, after_login, login, login_user, register
-from advertisements.views import home, post_advertisement, display_advertisement, product_display
+from advertisements.views import home, post_advertisement, display_advertisement, product_display, advertisement_select_category
 from django.conf import settings
 from django.conf.urls import patterns
 
@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^home/', home),
     url(r'^after_login/', after_login),
     url(r'^post_advertisement/', post_advertisement),
+    url(r'^post_advertisement_select_category', advertisement_select_category),
     url(r'^display_advertisement/', display_advertisement),
     url(r'^product_display/', product_display),
     url(r'^admin/', include(admin.site.urls)),

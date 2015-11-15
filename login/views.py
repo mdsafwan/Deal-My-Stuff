@@ -3,7 +3,8 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login
 from django.template import RequestContext
-from login.models import user_details
+from login.models import user_details, user_login
+from django.utils import timezone
 from __builtin__ import True
 
 def login_user(request):
@@ -43,6 +44,10 @@ def login(request):
        
         if user_details.objects.filter(User_Name=username, Password=password).exists():    
             successful_login = True
+            x = user_details.objects.filter(User_Name=username)
+            user_login.objects.create(User_ID = x[0],
+                                      Logged_In_Time = timezone.now())
+            #print x[0].User_ID
             return HttpResponseRedirect('/home/')
         else:
             successful_login = False

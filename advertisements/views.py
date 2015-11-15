@@ -1,11 +1,14 @@
 from django.shortcuts import render
-from advertisements.models import advertisement, category
+from advertisements.models import advertisement, category, electronic_gadget, book, vehicle, household_item
+from login.models import user_login
 from django.utils import timezone
+from django.http.response import HttpResponseRedirect, HttpResponse
 
 def home(request):
 	return render(request, "index.html", {})
 
 def post_advertisement(request):
+	Category = request.GET.get('C')
 	if request.POST:
 		Title = request.POST.get('title')
 		Advertisement_Tag1 = request.POST.get('adv_tag1')
@@ -15,10 +18,9 @@ def post_advertisement(request):
 		Selling_Price = request.POST.get('selling_price')
 		Image1 = request.POST.get('image1')
 		Description = request.POST.get('description')
-		Category = request.POST.get('category')
 		Post_Date = timezone.now()
 		Status = "Not Sold"
-  		
+		
 		temp1 = advertisement.objects.values('Advertisement_ID').latest('Advertisement_ID')
 		Advertisement_ID = temp1['Advertisement_ID']
   		
@@ -27,9 +29,15 @@ def post_advertisement(request):
 		Advertisement_ID = "ADV_" + str(add)
 		Product_ID = "PRD_" + str(add) 
 		
+		user_id_of_user_logged_in = user_login.objects.last()
+		Seller_User_ID = user_id_of_user_logged_in.User_ID
+		Buyer_User_ID = Seller_User_ID
+		
 		advertisement.objects.create(Advertisement_ID = Advertisement_ID,
   									Title = Title,
   									Post_Date = Post_Date,
+  									Seller_User_ID = Seller_User_ID,
+  									Buyer_User_ID = Buyer_User_ID,
   									Status = Status,
   									MRP = MRP,
   									Image1 = Image1,
@@ -39,14 +47,52 @@ def post_advertisement(request):
   									Advertisement_Tag3 = Advertisement_Tag3,
   									Description = Description
   									)
-
- 		category.objects.create(Product_ID = Product_ID,
- 					 			Advertisement_ID = Advertisement_ID,
+		
+		ad_id = advertisement.objects.filter(Advertisement_ID = Advertisement_ID).last()
+		category.objects.create(Product_ID = Product_ID,
+ 					 			Advertisement_ID = ad_id,
  					 			Category = Category)
-
-
+		
+		pr_id = category.objects.filter(Product_ID = Product_ID).last()
+		
+		Category = request.GET.get('C')
+		if Category == "CAT_1000":
+			Brand = request.POST.get('brand')
+			Product_Model = request.POST.get('model')
+			Specification = request.POST.get('specification')
+			electronic_gadget.objects.create(Product_ID = pr_id,
+											Brand = Brand,
+											Product_Model = Product_Model,
+											Specification = Specification)
+			
+		elif Category == "CAT_1001":
+			Genre = request.POST.get('genre')
+			Langauge = request.POST.get('language')
+			Publisher = request.POST.get('publisher')
+			book.objects.create(Product_ID = pr_id,
+								Genre = Genre,
+								Book_Language = Langauge,
+								Publisher = Publisher)
+		
+		elif Category == "CAT_1002":
+			Manufacturer = request.POST.get('manufacturer')
+			Product_Model = request.POST.get('model')
+			Year = request.POST.get('year')
+			vehicle.objects.create(Product_ID = pr_id,
+								Manufacturer = Manufacturer,
+								Product_Model = Product_Model,
+								Year = Year)
+		
+		elif Category == "CAT_1003":
+			Type = request.POST.get('type')
+			Brand = request.POST.get('brand')
+			household_item.objects.create(Product_ID = pr_id,
+										Type = Type,
+										Brand = Brand)
+		
 		#category, user_id not done
-	return render(request, "post_advertisement.html", {})
+		return HttpResponse("Success!")
+	return render(request, "post_advertisement.html", {'Category' : Category})
 
 def display_advertisement(request):
 	Category = request.GET.get('C')
@@ -99,3 +145,10 @@ def product_display(request):
 	x = advertisement.objects.filter(Advertisement_ID=Advertisement_ID)
 	ad = x[0]
 	return render(request, "product.html", {'ad' : ad})
+
+def advertisement_select_category(request):
+	if request.POST:
+		Category = request.POST.get('category')
+		url = "/post_advertisement?C=" + Category
+		return HttpResponseRedirect(url)
+	return render(request, "post_advertisement_select_category.html", {})

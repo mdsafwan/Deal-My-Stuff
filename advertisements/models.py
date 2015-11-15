@@ -20,11 +20,11 @@ class advertisement(models.Model):
     def __unicode__(self):
         return u'%s -- %s' % (self.Advertisement_ID, self.Title)
      
-    class meta:
+    class Meta:
         managed = True
         db_table = "advertisement"
         ordering = ['pk']
- 
+        verbose_name_plural = "advertisements"
  
 class category(models.Model):
     Advertisement_ID = models.ForeignKey(advertisement, to_field='Advertisement_ID')
@@ -34,7 +34,60 @@ class category(models.Model):
     def __unicode__(self):
         return u'%s -- %s' % (self.Product_ID, self.Advertisement_ID)
      
-    class meta:
+    class Meta:
         managed = True
         db_table = "category"
         ordering = ['pk']
+        verbose_name_plural = "categories"
+        
+class electronic_gadget(models.Model):
+    Product_ID = models.ForeignKey(category, to_field="Product_ID")
+    Brand = models.CharField(max_length=100, null=True, blank=True)
+    Product_Model = models.CharField(max_length=100, null=True, blank=True)
+    Specification = models.TextField(null=True, blank=True)
+    
+    def __unicode__(self):
+        return u'%s' % (self.Product_ID)
+    
+    class Meta:
+        db_table = "electronic_gadget"
+        verbose_name_plural = "electronic_gadgets"
+        
+class book(models.Model):
+    Product_ID = models.ForeignKey(category, to_field="Product_ID")
+    Genre = models.CharField(max_length=100, null=True, blank=True)
+    Book_Language = models.CharField(max_length=100, null=True, blank=True)
+    Publisher = models.CharField(max_length=100, null=True, blank=True)
+    
+    def __unicode__(self):
+        return u'%s' % (self.Product_ID)
+    
+    class Meta:
+        db_table = "book"
+        verbose_name_plural = "books"
+        
+class vehicle(models.Model):
+    Product_ID = models.ForeignKey(category, to_field="Product_ID")
+    Manufacturer = models.CharField(max_length=100, null=True, blank=True)
+    Product_Model = models.CharField(max_length=100, null=True, blank=True)
+    Year = models.CharField(max_length=4, null=True, blank=True)
+    
+    def __unicode__(self):
+        return u'%s' % (self.Product_ID)
+    
+    class Meta:
+        db_table = "vehicle"
+        verbose_name_plural = "vehicles"
+        
+class household_item(models.Model):
+    Product_ID = models.ForeignKey(category, to_field="Product_ID")
+    Brand = models.CharField(max_length=100, null=True, blank=True)
+    Type = models.CharField(max_length=100, null=True, blank=True)
+    
+    def __unicode__(self):
+        return u'%s' % (self.Product_ID)
+    
+    class Meta:
+        db_table = "household_item"
+        verbose_name_plural = "household_items"
+        

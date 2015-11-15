@@ -58,7 +58,7 @@
 				<li><a href="/display_advertisement/?C=CAT_1001">Books</a></li> |
 				<li><a href="/display_advertisement/?C=CAT_1002">Vehicles</a></li> |
 				<li><a href="/display_advertisement/?C=CAT_1003">Household items</a></li> |				
-				<li><a href="/post_advertisement/">Post an advertisement</a></li> |
+				<li><a href="/post_advertisement_select_category/">Post an advertisement</a></li> |
 				<li><a href="contact.html">Contact Us</a></li>
 			</ul>
 		</div>
@@ -93,98 +93,15 @@
 <div class="main">
 	 	 <div class="contact">				
 				  <div class="contact-form">
-			 	  	 	<h2>Post An Advertisement</h2>
-			 	 	    <form method="post" action="/post_advertisement/?C={{Category}}">{% csrf_token %}
-					    	<div>
-						    	<span><label>Title</label></span>
-						    	<span><input name="title" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						    	<span><label>Advertisement Tag-1</label></span>
-						    	<span><input name="adv_tag1" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Advertisement Tag-2</label></span>
-						    	<span><input name="adv_tag2" type="text" class="textbox" required></span>
-						    </div>
+			 	  	 	<h2>Select Category</h2>
+			 	 	    <form method="post" action="/post_advertisement_select_category/">{% csrf_token %}
                             <div>
-						     	<span><label>Advertisement Tag-3</label></span>
-						    	<span><input name="adv_tag3" type="text" class="textbox" required></span>
-						    </div>
-                            <div>
-						     	<span><label>MRP</label></span>
-						    	<span><input name="mrp" type="text" class="textbox" required></span>
-						    </div>
-                            <div>
-						     	<span><label>Selling Price</label></span>
-						    	<span><input name="selling_price" type="text" class="textbox" required></span>
-						    </div>
-                   			<hr>
-                            <div>
-						     	<span><label>Image 1</label></span>
-						    	<span><input name="image1" type="file" class="textbox" required></span>	
+						     	<span><label>Category</label></span>
+						    	<span><p>Electronic Gadgets</p><input name="category" type="radio" value="CAT_1000" class="textbox" required></span>
+                                <span><p>Books</p><input name="category" type="radio" value="CAT_1001" class="textbox" required></span>
+                                <span><p>Vehicles</p><input name="category" type="radio" value="CAT_1002" class="textbox" required></span>
+                                <span><p>Household Items</p><input name="category" type="radio" value="CAT_1003" class="textbox" required></span>
                             </div>
-                            {% if Category == "CAT_1000"%}
-                            <div>
-						     	<span><label>Brand</label></span>
-						    	<span><input name="brand" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Model</label></span>
-						    	<span><input name="model" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Specification</label></span>
-						    	<span><input name="specification" type="text" class="textbox" required></span>
-						    </div>
-						    {% endif %}
-						    
-						    {% if Category == "CAT_1001"%}
-                            <div>
-						     	<span><label>Genre</label></span>
-						    	<span><input name="genre" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Langauge</label></span>
-						    	<span><input name="language" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Publisher</label></span>
-						    	<span><input name="publisher" type="text" class="textbox" required></span>
-						    	
-						    </div>
-						    {% endif %}
-						    
-						    {% if Category == "CAT_1002"%}
-						    <div>
-						     	<span><label>Manufacturer</label></span>
-						    	<span><input name="manufacturer" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Model</label></span>
-						    	<span><input name="model" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Year</label></span>
-						    	<span><input name="year" type="text" class="textbox" required></span>
-						    </div>
-						    {% endif %}
-						    
-						    {% if Category == "CAT_1003"%}
-                            <div>
-						     	<span><label>Type</label></span>
-						    	<span><input name="type" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Brand</label></span>
-						    	<span><input name="brand" type="text" class="textbox" required></span>
-						    </div>
-						    {% endif %}
-						    
-						    <div>
-						    	<span><label>Description</label></span>
-						    	<span><textarea name="description"> </textarea></span>
-						    </div>
 						   <div>
 						   		<span><input type="submit" class="" value="Submit"></span>
 						  </div>
