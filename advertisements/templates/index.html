@@ -10,6 +10,10 @@
 <META Http-Equiv="Expires" Content="0">
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<SCRIPT type="text/javascript">
+    window.history.forward();
+    function noBack() { window.history.forward(); }
+</SCRIPT>
 <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
 <!-- start slider -->		
 	<link href="{% static 'css/slider.css' %}" rel="stylesheet" type="text/css" media="all" />
@@ -55,7 +59,8 @@
 				});
 			</script>
 </head>
-<body>
+<body onload="noBack();"
+    onpageshow="if (event.persisted) noBack();" onunload="">
 <!-- start header -->
 <div class="header_bg">
 <div class="wrap">
@@ -65,7 +70,7 @@
 		</div>
 		<div class="h_icon">
 		<ul class="icon1 sub-icon1">
-			<li><a class="active-icon c1" href="#"><i>*user*</i></a>
+			<li><a class="active-icon c1" href="/logout/"><i>logout</i></a>
 				<!--<ul class="sub-icon1 list">
 					<li><h3>shopping cart empty</h3><a href=""></a></li>
 					<li><p>if items in your wishlit are missing, <a href="contact.html">contact us</a> to view them</p></li>
@@ -94,7 +99,7 @@
 				<li><a href="/display_advertisement/?C=CAT_1002">Vehicles</a></li> |
 				<li><a href="/display_advertisement/?C=CAT_1003">Household items</a></li> |				
 				<li><a href="/post_advertisement_select_category/">Post an advertisement</a></li> |
-				<li><a href="contact.html">Contact Us</a></li>
+				<li><a href="/contact_us/">Contact Us</a></li>
 			</ul>
 		</div>
 		<div class="top-nav">
@@ -366,7 +371,15 @@
 		</div>
 	</div>
 </div>
-</div>	
+</div>
+<input type="hidden" id="refreshed" value="no">
+<script type="text/javascript">
+onload=function(){
+var e=document.getElementById("refreshed");
+if(e.value=="no")e.value="yes";
+else{e.value="no";location.reload();}
+}
+</script>	
 <!-- start footer -->
 <div class="footer_bg1">
 <div class="wrap">

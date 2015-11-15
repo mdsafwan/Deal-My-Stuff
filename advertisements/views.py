@@ -5,9 +5,15 @@ from django.utils import timezone
 from django.http.response import HttpResponseRedirect, HttpResponse
 
 def home(request):
+	user_logged_in = user_login.objects.filter(Logged_Out_Time__isnull=True)
+	if not user_logged_in:
+		return HttpResponseRedirect('/login_error/')
 	return render(request, "index.html", {})
 
 def post_advertisement(request):
+	user_logged_in = user_login.objects.filter(Logged_Out_Time__isnull=True)
+	if not user_logged_in:
+		return HttpResponseRedirect('/login_error/')
 	Category = request.GET.get('C')
 	if request.POST:
 		Title = request.POST.get('title')
@@ -95,6 +101,9 @@ def post_advertisement(request):
 	return render(request, "post_advertisement.html", {'Category' : Category})
 
 def display_advertisement(request):
+	user_logged_in = user_login.objects.filter(Logged_Out_Time__isnull=True)
+	if not user_logged_in:
+		return HttpResponseRedirect('/login_error/')
 	Category = request.GET.get('C')
 	if Category == "CAT_1000":
 		ads = []
@@ -138,6 +147,10 @@ def display_advertisement(request):
  	
  
 def product_display(request):
+	user_logged_in = user_login.objects.filter(Logged_Out_Time__isnull=True)
+	if not user_logged_in:
+		return HttpResponseRedirect('/login_error/')
+	
 	Advertisement_ID = request.GET.get('P')
 	Number = Advertisement_ID[4:]
 	Product_ID = "PRD_" + Number
@@ -147,8 +160,19 @@ def product_display(request):
 	return render(request, "product.html", {'ad' : ad})
 
 def advertisement_select_category(request):
+	user_logged_in = user_login.objects.filter(Logged_Out_Time__isnull=True)
+	if not user_logged_in:
+		return HttpResponseRedirect('/login_error/')
+	
 	if request.POST:
 		Category = request.POST.get('category')
 		url = "/post_advertisement?C=" + Category
 		return HttpResponseRedirect(url)
 	return render(request, "post_advertisement_select_category.html", {})
+
+def contact_us(request):
+	user_logged_in = user_login.objects.filter(Logged_Out_Time__isnull=True)
+	if not user_logged_in:
+		return HttpResponseRedirect('/login_error/')
+	
+	return render(request, "contact.html", {})

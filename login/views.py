@@ -45,8 +45,10 @@ def login(request):
         if user_details.objects.filter(User_Name=username, Password=password).exists():    
             successful_login = True
             x = user_details.objects.filter(User_Name=username)
+            status = "Logged_In"
             user_login.objects.create(User_ID = x[0],
-                                      Logged_In_Time = timezone.now())
+                                      Logged_In_Time = timezone.now(),
+                                      Status = status)
             #print x[0].User_ID
             return HttpResponseRedirect('/home/')
         else:
@@ -90,3 +92,17 @@ def register(request):
     
     password_match = True
     return render(request, "register.html", {'password_match' : password_match})
+
+def logout(request):
+    user_id_of_user_logged_in = user_login.objects.last()
+    User_ID = user_id_of_user_logged_in.User_ID
+    #user_login.objects.latest('id').update(Status="Logged_Out",
+    #                                                  Logged_Out_Time=timezone.now())
+    obj = user_login.objects.latest('id')
+    obj.Status = "Logged_Out"
+    obj.Logged_Out_Time = timezone.now()
+    obj.save()
+    return render(request, "logout.html", {'User_ID' : User_ID})
+
+def login_error(request):
+    return render(request, "please_login.html", {})

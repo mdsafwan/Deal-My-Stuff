@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from login.views import display_login, after_login, login, login_user, register
-from advertisements.views import home, post_advertisement, display_advertisement, product_display, advertisement_select_category
+from login.views import display_login, after_login, login, login_user, register, logout, login_error
+from advertisements.views import home, post_advertisement, display_advertisement, product_display, advertisement_select_category,\
+    contact_us
 from django.conf import settings
 from django.conf.urls import patterns
 
@@ -27,6 +28,9 @@ urlpatterns = [
     url(r'^login2/$', login_user),
     url(r'^register/$', register),
     url(r'^login/', login),
+    url(r'^logout/', logout),
+    url(r'^login_error/', login_error),
+    url(r'^contact_us/', contact_us),
     url(r'^home/', home),
     url(r'^after_login/', after_login),
     url(r'^post_advertisement/', post_advertisement),
