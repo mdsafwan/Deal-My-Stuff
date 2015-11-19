@@ -30,7 +30,7 @@
 		</div>
 		<div class="h_icon">
 		<ul class="icon1 sub-icon1">
-			<li><a class="active-icon c1" href="/logout/"><i>LOGOUT</i></a>
+			<li><a class="active-icon c1" href="#"><i>LOGOUT</i></a>
 				<!--<ul class="sub-icon1 list">
 					<li><h3>shopping cart empty</h3><a href=""></a></li>
 					<li><p>if items in your wishlit are missing, <a href="contact.html">contact us</a> to view them</p></li>
@@ -93,102 +93,8 @@
 <div class="main">
 	 	 <div class="contact">				
 				  <div class="contact-form">
-			 	  	 	<h2>Post An Advertisement</h2>
-			 	 	    <form method="post" action="/post_advertisement/?C={{Category}}">{% csrf_token %}
-					    	<div>
-						    	<span><label>Title</label></span>
-						    	<span><input name="title" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						    	<span><label>Advertisement Tag-1</label></span>
-						    	<span><input name="adv_tag1" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Advertisement Tag-2</label></span>
-						    	<span><input name="adv_tag2" type="text" class="textbox" required></span>
-						    </div>
-                            <div>
-						     	<span><label>Advertisement Tag-3</label></span>
-						    	<span><input name="adv_tag3" type="text" class="textbox" required></span>
-						    </div>
-                            <div>
-						     	<span><label>MRP</label></span>
-						    	<span><input name="mrp" type="text" class="textbox" required></span>
-						    </div>
-                            <div>
-						     	<span><label>Selling Price</label></span>
-						    	<span><input name="selling_price" type="text" class="textbox" required></span>
-						    </div>
-                   			<hr>
-                            <div>
-						     	<span><label>Image 1</label></span>
-						    	<span><input name="image1" type="file" class="textbox" required></span>	
-                            </div>
-                            {% if Category == "CAT_1000"%}
-                            <div>
-						     	<span><label>Brand</label></span>
-						    	<span><input name="brand" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Model</label></span>
-						    	<span><input name="model" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Specification</label></span>
-						    	<span><input name="specification" type="text" class="textbox" required></span>
-						    </div>
-						    {% endif %}
-						    
-						    {% if Category == "CAT_1001"%}
-                            <div>
-						     	<span><label>Genre</label></span>
-						    	<span><input name="genre" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Langauge</label></span>
-						    	<span><input name="language" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Publisher</label></span>
-						    	<span><input name="publisher" type="text" class="textbox" required></span>
-						    	
-						    </div>
-						    {% endif %}
-						    
-						    {% if Category == "CAT_1002"%}
-						    <div>
-						     	<span><label>Manufacturer</label></span>
-						    	<span><input name="manufacturer" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Model</label></span>
-						    	<span><input name="model" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Year</label></span>
-						    	<span><input name="year" type="text" class="textbox" required></span>
-						    </div>
-						    {% endif %}
-						    
-						    {% if Category == "CAT_1003"%}
-                            <div>
-						     	<span><label>Type</label></span>
-						    	<span><input name="type" type="text" class="textbox" required></span>
-						    </div>
-						    <div>
-						     	<span><label>Brand</label></span>
-						    	<span><input name="brand" type="text" class="textbox" required></span>
-						    </div>
-						    {% endif %}
-						    
-						    <div>
-						    	<span><label>Description</label></span>
-						    	<span><textarea name="description"> </textarea></span>
-						    </div>
-						   <div>
-						   		<span><input type="submit" class="" value="Submit"></span>
-						  </div>
-					    </form>
+			 	  	 	<h2>Advertisement successfully posted!</h2>
+			 	 	    
 				    </div>
   				<div class="clear"></div>		
 			  </div>

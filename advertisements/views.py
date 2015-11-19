@@ -97,7 +97,7 @@ def post_advertisement(request):
 										Brand = Brand)
 		
 		#category, user_id not done
-		return HttpResponse("Success!")
+		return render(request, "post_success.html", {})
 	return render(request, "post_advertisement.html", {'Category' : Category})
 
 def display_advertisement(request):
