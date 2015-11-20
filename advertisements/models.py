@@ -5,10 +5,10 @@ class advertisement(models.Model):
     Advertisement_ID = models.CharField(max_length=8, primary_key=True, default="ADV_0000")
     Title = models.CharField(max_length=100, null=True, blank=True)
     Post_Date = models.DateTimeField(null=True, blank=True)
-    Sold_Date = models.DateTimeField(null=True, blank=True)
+    #Sold_Date = models.DateTimeField(null=True, blank=True)
     Status = models.CharField(max_length=10, null=True, blank=True)
     Seller_User_ID = models.ForeignKey(user_details, to_field='User_ID', related_name="Seller_User_ID", db_column='Seller_User_ID')
-    Buyer_User_ID = models.ForeignKey(user_details, to_field='User_ID', related_name="Buyer_User_ID", db_column='Buyer_User_ID')
+    #Buyer_User_ID = models.ForeignKey(user_details, to_field='User_ID', related_name="Buyer_User_ID", db_column='Buyer_User_ID')
     MRP = models.IntegerField(null=True, blank=True)
     Selling_Price = models.IntegerField(null=True, blank=True)
     Image1 = models.TextField(null=True, blank=True)
@@ -90,4 +90,15 @@ class household_item(models.Model):
     class Meta:
         db_table = "household_item"
         verbose_name_plural = "household_items"
-        
+
+
+class category_type(models.Model):
+    Category_ID = models.CharField(max_length=8, null=True, blank=True)
+    Category = models.CharField(max_length=20, null=True, blank=True)
+    
+    def __unicode__(self):
+        return u'%s' % (self.Category)
+    
+    class Meta:
+        db_table = "category_type"
+        verbose_name_plural = "category_type"

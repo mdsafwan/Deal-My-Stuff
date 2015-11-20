@@ -41,9 +41,9 @@ def post_advertisement(request):
 		
 		advertisement.objects.create(Advertisement_ID = Advertisement_ID,
   									Title = Title,
-  									Post_Date = Post_Date,
+  				#					Post_Date = Post_Date,
   									Seller_User_ID = Seller_User_ID,
-  									Buyer_User_ID = Buyer_User_ID,
+  				#					Buyer_User_ID = Buyer_User_ID,
   									Status = Status,
   									MRP = MRP,
   									Image1 = Image1,
