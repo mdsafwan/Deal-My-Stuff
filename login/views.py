@@ -37,6 +37,8 @@ def after_login(request):
     return HttpResponse("welcome: %s" % request.path)
 
 def login(request):
+#   if request.COOKIES.get( 'USER' ):
+#       print request.COOKIES.get ('USER' )
     successful_login = True
     if request.POST:
         username = request.POST.get('username')
@@ -119,7 +121,9 @@ def logout(request):
     obj.Status = "Logged_Out"
     obj.Logged_Out_Time = timezone.now()
     obj.save()
-    return render(request, "logout.html", {'User_ID' : User_ID})
+    response = render(request, "logout.html", {'User_ID' : User_ID})
+    response.delete_cookie("User_ID")
+    return response
 
 def login_error(request):
     return render(request, "please_login.html", {})

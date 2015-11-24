@@ -8,7 +8,9 @@ def home(request):
 	user_logged_in = user_login.objects.filter(Logged_Out_Time__isnull=True)
 	if not user_logged_in:
 		return HttpResponseRedirect('/login_error/')
-	return render(request, "index.html", {})
+	response = render(request, "index.html", {})
+	response.set_cookie("User_ID", user_logged_in[0].User_ID.User_ID)
+	return response
 
 def post_advertisement(request):
 	user_logged_in = user_login.objects.filter(Logged_Out_Time__isnull=True)
