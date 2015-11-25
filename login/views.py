@@ -37,8 +37,8 @@ def after_login(request):
     return HttpResponse("welcome: %s" % request.path)
 
 def login(request):
-#   if request.COOKIES.get( 'USER' ):
-#       print request.COOKIES.get ('USER' )
+    if request.COOKIES.get('User_ID'):
+        return HttpResponseRedirect('/logged_in/')
     successful_login = True
     if request.POST:
         username = request.POST.get('username')
@@ -127,3 +127,8 @@ def logout(request):
 
 def login_error(request):
     return render(request, "please_login.html", {})
+
+def logged_in(request):
+    if request.COOKIES.get('User_ID'):
+        User_ID = request.COOKIES.get('User_ID')
+    return render(request, "logged_in.html", {'User_ID' : User_ID})

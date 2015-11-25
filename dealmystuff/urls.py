@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from login.views import display_login, after_login, login, login_user, register, logout, login_error
+from login.views import display_login, after_login, login, login_user, register, logout, login_error, logged_in
 from advertisements.views import home, post_advertisement, display_advertisement, product_display, advertisement_select_category,\
     contact_us
 from django.conf import settings
@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^login/', login),
     url(r'^logout/', logout),
     url(r'^login_error/', login_error),
+    url(r'^logged_in/', logged_in),
     url(r'^contact_us/', contact_us),
     url(r'^home/', home),
     url(r'^after_login/', after_login),
