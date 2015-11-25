@@ -5,7 +5,7 @@
 <title>Deal My Stuff | Post An Advertisement</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+<link href="{% static 'css/fontapi.css' %}" rel='stylesheet' type='text/css'>
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
 <script src="{% static 'js/jquery.min.js' %}"></script> 
 <!-- start top_js_button -->
@@ -113,11 +113,13 @@
 						    </div>
                             <div>
 						     	<span><label>MRP</label></span>
-						    	<span><input name="mrp" type="text" class="textbox" required></span>
+						    	<span><input name="mrp" type="number" class="textbox" oninvalid="setCustomValidity('Enter the MRP')"
+    onchange="try{setCustomValidity('')}catch(e){}" required></span>
 						    </div>
                             <div>
 						     	<span><label>Selling Price</label></span>
-						    	<span><input name="selling_price" type="text" class="textbox" required></span>
+						    	<span><input name="selling_price" type="number" class="textbox" oninvalid="setCustomValidity('Enter the Selling Price')"
+    onchange="try{setCustomValidity('')}catch(e){}" required></span>
 						    </div>
                    			<hr>
                             <div>
@@ -166,7 +168,8 @@
 						    </div>
 						    <div>
 						     	<span><label>Year</label></span>
-						    	<span><input name="year" type="text" class="textbox" required></span>
+						    	<span><input name="year" type="text" class="textbox" maxlength="4" oninvalid="setCustomValidity('Enter the Selling Price')"
+    onchange="try{setCustomValidity('')}catch(e){}" required></span>
 						    </div>
 						    {% endif %}
 						    
@@ -183,7 +186,7 @@
 						    
 						    <div>
 						    	<span><label>Description</label></span>
-						    	<span><textarea name="description"> </textarea></span>
+						    	<span><textarea name="description" required></textarea></span>
 						    </div>
 						   <div>
 						   		<span><input type="submit" class="" value="Submit"></span>

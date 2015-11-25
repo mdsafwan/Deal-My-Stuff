@@ -5,7 +5,7 @@
 <title>Deal My Stuff | Post An Advertisement</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+<link href="{% static 'css/fontapi.css' %}" rel='stylesheet' type='text/css'>
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
 <script src="{% static 'js/jquery.min.js' %}"></script> 
 <!-- start top_js_button -->
@@ -96,11 +96,14 @@
 			 	  	 	<h2>Select Category</h2>
 			 	 	    <form method="post" action="/post_advertisement_select_category/">{% csrf_token %}
                             <div>
-						     	<span><label>Category</label></span>
-						    	<span><p>Electronic Gadgets</p><input name="category" type="radio" value="CAT_1000" class="textbox" required></span>
-                                <span><p>Books</p><input name="category" type="radio" value="CAT_1001" class="textbox" required></span>
-                                <span><p>Vehicles</p><input name="category" type="radio" value="CAT_1002" class="textbox" required></span>
-                                <span><p>Household Items</p><input name="category" type="radio" value="CAT_1003" class="textbox" required></span>
+						     	<span><label></label></span>
+						    	<span><label><input name="category" type="radio" value="CAT_1000" class="textbox" required>Electronic Gadgets</label></span>
+                                <span><label></label></span>
+                                <span><label><input name="category" type="radio" value="CAT_1001" class="textbox" required>Books</label></span>
+                                <span><label></label></span>
+                                <span><label><input name="category" type="radio" value="CAT_1002" class="textbox" required>Vehicles</label></span>
+                                <span><label></label></span>
+                                <span><label><input name="category" type="radio" value="CAT_1003" class="textbox" required>Household Items</label></span>
                             </div>
 						   <div>
 						   		<span><input type="submit" class="" value="Submit"></span>

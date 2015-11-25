@@ -5,7 +5,7 @@
 <title>Deal My Stuff | Contact Us</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+<link href="{% static 'css/fontapi.css' %}" rel='stylesheet' type='text/css'>
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
 <script src="{% static 'js/jquery.min.js' %}"></script> 
 <!-- start top_js_button -->
@@ -100,22 +100,23 @@
       				</div>
 				  <div class="contact-form">
 			 	  	 	<h2>Contact Us</h2>
-			 	 	    <form method="post" action="/contact_us/">
+			 	 	    <form method="post" action="/contact_us/">{% csrf_token %}
 					    	<div>
 						    	<span><label>Name</label></span>
-						    	<span><input name="userName" type="text" class="textbox"></span>
+						    	<span><input name="userName" type="text" class="textbox" required></span>
 						    </div>
 						    <div>
 						    	<span><label>E-mail</label></span>
-						    	<span><input name="userEmail" type="text" class="textbox"></span>
+						    	<span><input name="userEmail" type="email" class="textbox" required></span>
 						    </div>
 						    <div>
 						     	<span><label>Mobile</label></span>
-						    	<span><input name="userPhone" type="text" class="textbox"></span>
+						    	<span><input name="userPhone" type="number" class="textbox" min="7000000000" max="9999999999" type="number" oninvalid="setCustomValidity('Enter a valid mobile number')"
+    onchange="try{setCustomValidity('')}catch(e){}" required></span>
 						    </div>
 						    <div>
 						    	<span><label>Subject</label></span>
-						    	<span><textarea name="userMsg"> </textarea></span>
+						    	<span><textarea name="userMsg" required></textarea></span>
 						    </div>
 						   <div>
 						   		<span><input type="submit" class="" value="Submit"></span>
