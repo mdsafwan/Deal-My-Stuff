@@ -132,3 +132,6 @@ def logged_in(request):
     if request.COOKIES.get('User_ID'):
         User_ID = request.COOKIES.get('User_ID')
     return render(request, "logged_in.html", {'User_ID' : User_ID})
+
+def error404(request):
+    return render(request, "404error.html", {})

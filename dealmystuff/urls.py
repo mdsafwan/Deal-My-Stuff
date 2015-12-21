@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from login.views import display_login, after_login, login, login_user, register, logout, login_error, logged_in
+from login.views import display_login, after_login, login, login_user, register, logout, login_error, logged_in, error404
 from advertisements.views import home, post_advertisement, display_advertisement, product_display, advertisement_select_category,\
     contact_us
 from django.conf import settings
@@ -39,6 +39,7 @@ urlpatterns = [
     url(r'^display_advertisement/', display_advertisement),
     url(r'^product_display/', product_display),
     url(r'^admin/', include(admin.site.urls)),
+    #url(r'^.*/', error404)  # 404 error, always at the end
 ]
 
 if settings.DEBUG:
